@@ -1,8 +1,12 @@
 
 
 .home {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   justify-content: center;
+  padding: 20px;
+  border: 5px solid rgb(134, 64, 123);
 }
 
 .cart {
@@ -30,8 +34,44 @@
   justify-content: center;
 }
 
+.movie-list {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  min-width: 40%;
+  padding-left: 0;
+  margin: auto;
+  list-style-type: none;
+  border: 3px double rgb(0, 47, 255);
+}
 
+.movie-list li {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: left;
+  align-items: center;
+}
 
+.movie-list button {
+  flex: none;
+}
+.movie-title {
+  font-size: x-large;
+  font-family: 'Times New Roman', Times, serif;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.edit-title {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0px;
+  margin: auto;
+}
+
+.home button {
+  margin: 5px;
+}
 .nav {
   display: flex;
   max-width: 100%;
