@@ -10,28 +10,22 @@ function Movies () {
     const [input, setInput] = useState("");
     const [search, setSearch] = useState([]);
     
+    const api_key = process.env.REACT_APP_API_KEY;
     
-    const getShows = async() => {
-        try{
-            await fetch("https://api.themoviedb.org/3/discover/movie?api_key=95b028b03cc7ed70f403ad0c3b05f43a")
-            .then(res=> res.json())
-            .then(json=> setShows(json.results))
-        }catch(err){
-            console.error(err)
-        }
-        
-    }
+const getShows = async () => {
+  try {
+    const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=`+api_key);
+    const json = await res.json();
+    setShows(json.results || []);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
     const getSearch = async() =>{
-        try{
-            await fetch("https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&api_key=95b028b03cc7ed70f403ad0c3b05f43a&query="+input)
-            .then (res=>res.json())
-            .then (json=>setSearch(json.results))
-        } catch(err){
-            console.error(err);
-        }
-        console.log(search);
+        console.log(input+" was searched. Function still under construction.");
     }
+    
     useEffect(()=> {
         getShows()
     },[])
@@ -52,10 +46,17 @@ function Movies () {
             <h1>Movie Search</h1>
             <main>
                 <input type="text" onChange={handleChange} value={input} className="searchbox-input" placeholder='Enter a movie to search...'></input>
-                <button onClick={handleClick}>Search</button>
-                {shows.map((data)=>{
-                    return <div>  <img src={'https://image.tmdb.org/t/p/w500'+data?.poster_path}></img> </div>
-                })}
+                <button onClick={handleClick} onChange={handleChange}>Search</button>
+                {shows.map((data) => (
+  <div key={data.id}>
+    <img
+      src={data?.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : '/placeholder.png'}
+      alt={data.title || 'Movie poster'}
+      width="200"
+      height="300"
+    />
+  </div>
+))}
             </main>
         </div>
     );
