@@ -45,18 +45,21 @@ const getShows = async () => {
         <div className="movies">
             <h1>Movie Search</h1>
             <main>
-                <input type="text" onChange={handleChange} value={input} className="searchbox-input" placeholder='Enter a movie to search...'></input>
+                <input type="text" onChange={handleChange} value={input} className="searchbox-input" placeholder='Search Function coming soon...'></input>
                 <button onClick={handleClick} onChange={handleChange}>Search</button>
+                <h2> Discover these movies.</h2>
+                <div className = "movie-image-section">
                 {shows.map((data) => (
-  <div key={data.id}>
+  <div key={data.id} className="movie-image">
     <img
       src={data?.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : '/placeholder.png'}
       alt={data.title || 'Movie poster'}
       width="200"
       height="300"
     />
+  </div>))}
   </div>
-))}
+
             </main>
         </div>
     );
