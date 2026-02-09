@@ -51,6 +51,7 @@
   text-align: left;
   justify-content: left;
   align-items: center;
+  flex: 1 1 calc(25%-20px);
 }
 
 .movie-list button {
@@ -80,7 +81,7 @@
   gap: 20px;
   border: 7px solid rgb(16, 53, 133);
   border-style: double inset;
-  background-color: rgb(255, 255, 255);
+  background-image: linear-gradient(to right,rgba(0, 0, 255, 0.767), white, rgba(0, 0, 255, 0.767));
   color: rgb(0, 5, 5);
 }
 
@@ -105,4 +106,21 @@
   text-decoration: none;
   text-shadow: 2px 2px 2px rgb(216, 9, 9);
   font-style: italic; 
+}
+
+.movie-image-section {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-image {
+  display: flex;
+  margin: 1em;
+}
+
+.searchbox-input {
+  width: 20em;
 }
